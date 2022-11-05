@@ -1,0 +1,16 @@
+title: "mfab"
+baseUrl: "https://"
+
+content_types:
+  - posts
+  - notes
+
+posts:
+  dateInURL: true
+  sortBy: "date"
+  sortReverse: true
+
+notes:
+  dateInURL: false
+  sortBy: "title"
+  sortReverse: false
