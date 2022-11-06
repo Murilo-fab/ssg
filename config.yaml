@@ -1,16 +1,26 @@
-title: "mfab"
-baseUrl: "https://"
+site:
+  title: "MFAB"
+  baseUrl: "https://"
+  menus:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Posts"
+      url: "/posts"
+      weight: 2
+    - name: "Notes"
+      url: "/notes"
+      weight: 3
+    - name: "About"
+      url: "/about"
+      weight: 4
 
 content_types:
-  - posts
-  - notes
-
-posts:
-  dateInURL: true
-  sortBy: "date"
-  sortReverse: true
-
-notes:
-  dateInURL: false
-  sortBy: "title"
-  sortReverse: false
+  posts:
+    dateInURL: true
+    sortBy: "date"
+    sortReverse: true
+  notes:
+    dateInURL: false
+    sortBy: "title"
+    sortReverse: false

@@ -1,6 +1,22 @@
-{% macro head(page_title) -%}
+{% macro head(site) -%}
 <head>
-    <title>{{ page_title }}</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>{{ site.title }}</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 {% endmacro -%}
+
+{% macro header(site) -%}
+<header>
+    <div class=""main>
+        <a href="{{ site.baseURL }}">{{ site.title }}</a>
+    </div>
+    <nav>
+        {% for menu in site.menus %}
+        <a href="{{menu.url}}">{{menu.name}}</a>
+        {%- endfor %}
+    </nav>
+</header>
+{% endmacro -%}
+

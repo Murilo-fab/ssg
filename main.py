@@ -19,14 +19,15 @@ def load_content(config, content_dirname):
             item = yaml.safe_load(fontmatter)
             item['content'] = markdown.markdown(content)
             item['slug'] = os.path.splitext(os.path.basename(f.name))[0]
-            if (config[content_type]['dateInURL']):
+
+            if (config['content_types'][content_type]['dateInURL']):
                 item['url'] = f"/{content_type}/{item['date'].year}/{item['date'].month:0>2}/{item['date'].day:0>2}/{item['slug']}/"
             else:
                 item['url'] = f"/{content_type}/{item['slug']}/"
 
             items.append(item)
 
-        items.sort(key= lambda x: x[config[content_type]["sortBy"]], reverse=config[content_type]["sortReverse"])
+        items.sort(key= lambda x: x[config['content_types'][content_type]["sortBy"]], reverse=config['content_types'][content_type]["sortReverse"])
 
         return items
 

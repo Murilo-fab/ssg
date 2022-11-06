@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     {% import "macros.html" as macros %}
-    {{ macros.head(config.title) }}
+    {{ macros.head(config.site) }}
     <body>
+        {{ macros.header(config.site)}}
         <h1>Posts</h1>
         <ul>
         {% for post in content.posts %}
