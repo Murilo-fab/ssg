@@ -1,26 +1,33 @@
 site:
   title: "MFAB"
-  baseUrl: "https://"
+  author: "Murilo"
+  baseURL: "/"
+  description: "Descrição"
   menus:
     - name: "Home"
       url: "/"
       weight: 1
-    - name: "Posts"
-      url: "/posts"
-      weight: 2
     - name: "Notes"
       url: "/notes"
-      weight: 3
+      weight: 2
     - name: "About"
       url: "/about"
-      weight: 4
+      weight: 3
 
 content_types:
   posts:
-    dateInURL: true
     sortBy: "date"
     sortReverse: true
+    dateInURL: true
   notes:
-    dateInURL: false
     sortBy: "title"
     sortReverse: false
+    dateInURL: false
+
+socials:
+  - name: "GitHub"
+    icon: "github"
+    url: "https://github.com/Murilo-fab"
+  - name: "Twitter"
+    icon: "twitter"
+    url: "https://twitter.com/murilo_fab"

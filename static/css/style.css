@@ -1,6 +1,6 @@
 :root{
-    --maincolor: blue;
-    --bordercl:rebeccapurple;
+    --maincolor: rgb(76, 76, 248);
+    --bordercl: rgb(76, 76, 248);
     --callouctcolor:dodgerblue;
     --hovercolor:navy;
     --darkMaincolor: #50fa7b;

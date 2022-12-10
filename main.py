@@ -18,12 +18,11 @@ def load_content(config, content_dirname):
             
             item = yaml.safe_load(fontmatter)
             item['content'] = markdown.markdown(content)
-            item['slug'] = os.path.splitext(os.path.basename(f.name))[0]
-
-            if (config['content_types'][content_type]['dateInURL']):
-                item['url'] = f"/{content_type}/{item['date'].year}/{item['date'].month:0>2}/{item['date'].day:0>2}/{item['slug']}/"
+            item['slug'] = f"{content_type}/{os.path.splitext(os.path.basename(f.name))[0]}"
+            if config['content_types'][content_type]["dateInURL"]:
+                item['url'] = f"/{item['date'].year}/{item['date'].month:0>2}/{item['date'].day:0>2}/{item['slug']}/"
             else:
-                item['url'] = f"/{content_type}/{item['slug']}/"
+                item['url'] = f"/{item['slug']}/"
 
             items.append(item)
 
@@ -61,9 +60,17 @@ def render_site(config, content, enviroment: jinja2.Environment, output_dirname)
     with open(f"{output_dirname}/index.html", 'w') as f:
         f.write(index_template.render(config=config, content=content))
 
+
     for content_type in content:
         render_type(content_type)
 
+    # Notes page
+    notes_page_template = enviroment.get_template("notes_collection.html")
+    with open(f"{output_dirname}/notes/index.html", 'w') as f:
+        f.write(notes_page_template.render(config=config, content=content))
+
+    # About
+    
     # Static
     shutil.copytree("static", "./public", dirs_exist_ok=True)
 

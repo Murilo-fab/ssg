@@ -4,12 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{{ site.title }}</title>
     <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 {% endmacro -%}
 
 {% macro header(site) -%}
 <header>
-    <div class=""main>
+    <div class="main">
         <a href="{{ site.baseURL }}">{{ site.title }}</a>
     </div>
     <nav>
@@ -20,3 +22,21 @@
 </header>
 {% endmacro -%}
 
+{% macro footer(config) -%}
+<footer>
+    <div style="display:flex">
+        {% for social in config.socials %}
+        <a class="soc" href="{{ social.url }}" title="{{ social.name }}"><i data-feather="{{social.icon}}"></i></a>
+        <a class="border"></a>
+        {%- endfor %}
+    </div>
+    <div class="footer-info">
+        Created by {{ config.site.author }} with <a href="https://github.com/Murilo-fab/ssg">ssg</a>
+    </div>
+</footer>
+
+<script>
+    feather.replace()
+</script>
+
+{% endmacro -%}

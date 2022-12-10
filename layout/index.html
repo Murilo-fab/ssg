@@ -3,12 +3,29 @@
     {% import "macros.html" as macros %}
     {{ macros.head(config.site) }}
     <body>
-        {{ macros.header(config.site)}}
-        <h1>Posts</h1>
-        <ul>
-        {% for post in content.posts %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a> (posted at {{ post.date }})</li>
-        {% endfor %}
-        </ul>
+        <div class="content">
+            {{ macros.header(config.site)}}
+            <main class="list">
+                <div class="site-description">
+                    {% if config.site.description is defined %}
+                        <p>{{ config.site.description }}</p>
+                    {% endif %}
+                </div>
+                <section class="list-item">
+                    {% for post in content.posts %}
+                        <h1 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                        <time>{{ post.date.strftime('%B %-d, %Y') }}</time>
+                        <br>
+                        {% if post.description %}
+                            <div class="description">
+                                {{ post.description}}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </section>
+            </main>
+            {{ macros.footer(config) }}
+        </div>
     </body>
 </html>
